@@ -55,49 +55,64 @@ Career Ready Practices describe the career-ready skills that educators should se
 
 After successfully completing this program, the student will be able to perform the following:
 
-1. Identify commonly used art and animation production tools in the game design industry.
-2. Understand intellectual property rights, copyright laws and plagiarism as it applies to creative assets.
-3. Explain the importance of employability skill and entrepreneurship skills as it relates to game/simulation development.
-4. Identify tools and software commonly used in game development.
-5. Investigate career opportunities in the game industry.
-6. Demonstrate research and information fluency.
-7. Demonstrate an understanding of the techniques used to evaluate game mechanics, game play, flow, and game design.
-8. Explore the methods used to create and sustain player immersion.
-9. Describe the game development life cycle.
-10. Demonstrate the professional level of written and oral communication required in the game development industry.
-11. Understand the core tasks and challenges that face a video game design team.
-12. Demonstrate leadership and teamwork skills needed, as it relates to game/simulation development, to accomplish team goals and objectives.
-13. Create a working game or simulation as part of a team.
-14. Create a game design production plan that describes the game play, outcomes, controls, interface and artistic style of a video game.
-15. Categorize the different gaming genres.
-16. Identify popular games and identify commonality between them.
-17. Understand the general procedure and requirements of game design.
-18. Understand the general principles of storytelling for game design.
-19. Understand character archetypes and character design.
-20. Develop a game design document.
-21. Understand the process of creating and designing player choice and other game designer strategy considerations.
-22. Create and design the game flow as it relates to story and plot.
-23. Assess common principles and procedures in game flow design.
-24. Describe player challenge rule creation elements.
-25. Understand the use of inventory systems in game design.
-26. Identify functions of information processing.
-27. Test programs.
-28. Plan program design.
-29. Code programs.
-30. Perform program maintenance.
-31. Create and maintain documentation.
-32. Evaluate assigned game programming tasks.
-33. Implement enhanced program structures.
-34. Demonstrate the importance of health, safety, and environmental management systems in organizations and their importance to organizational performance and regulatory compliance.
-35. Demonstrate leadership and teamwork skills needed to accomplish team goals and objectives.
-36. Demonstrate personal money-management concepts, procedures, and strategies.
-37. Identify and describe basic network terminology and network security.
-38. Game configuration.
-39. Test programs.
-40. Plan program design.
-41. Create and maintain documentation.
-42. Code programs.
-43. Demonstrate an understanding of operating systems, environments, and platforms.
-44. Implement enhanced program structures.
-45. Implement multimedia programming.
-46. Develop an understanding of programming techniques and concepts.
+- 01.0	Demonstrate knowledge, skill, and application of information technology to accomplish job objectives and enhance workplace performance.   
+- 02.0	Develop an awareness of microcomputers.   
+- 03.0	Demonstrate an understanding of networks.   
+- 04.0	Use word processing applications to enhance the effectiveness of various types of documents and communication.  
+- 05.0	Use presentation applications to enhance communication skills.   
+- 06.0	Use spreadsheet applications to enhance communication skills.  
+- 07.0	Use database applications to store and organize data.  
+- 08.0	Use electronic mail to enhance communication skills.  
+- 09.0	Investigate individual assessment and job/career exploration and individual career planning that reflect the transition from school to work, lifelong learning, and personal and professional goals.   
+- 10.0	Incorporate appropriate leadership and supervision techniques, customer service strategies, and standards of personal ethics to accomplish job objectives and enhance workplace performance.   
+- 11.0	Demonstrate competence using computer networks, internet and online databases to facilitate collaborative or individual learning and communication.   
+- 12.0	Develop awareness of computer languages, web-based and software applications, and emerging technologies.   
+- 13.0	Demonstrate an understanding of basic html by creating a simple web page.  
+- 14.0	Demonstrate comprehension and communication skills.   
+- 15.0	Use social media to enhance online communication and develop an awareness of a digital footprint.  
+- 16.0	Identify commonly used art and animation production tools in the game design industry.
+- 17.0	Understand intellectual property rights, copyright laws and plagiarism as it applies to creative assets.
+- 18.0	Explain the importance of employability skills and entrepreneurship skills as it relates to game/simulation development. 
+- 19.0	Identify tools and software commonly used in game development. 
+- 20.0	Investigate career opportunities in the game industry.
+- 21.0	Demonstrate research and information fluency.
+- 22.0	Demonstrate an understanding of the techniques used to evaluate game mechanics, game play, flow, and game design.
+- 23.0	Explore the methods used to create and sustain player immersion.
+- 24.0	Describe the game development life cycle.
+- 25.0	Demonstrate the professional level of written and oral communication required in the game development industry.
+- 26.0	Understand the core tasks and challenges that face a video game design team.
+- 27.0	Demonstrate leadership and teamwork skills needed, as it relates to game/simulation development, to accomplish team goals and objectives.
+- 28.0	Create a working game or simulation as part of a team.
+- 29.0	Create a game design production plan that describes the game play, outcomes, controls, interface and artistic style of a video game.
+- 30.0	Categorize the different gaming genres.
+- 31.0	Identify popular games and identify commonality between them.
+- 32.0	Understand the general procedure and requirements of game design.
+- 33.0	Understand the general principles of storytelling for game design.
+- 34.0	Understand character archetypes and character design.
+- 35.0	Develop a game design document.
+- 36.0	Understand the process of creating and designing player choice and other game designer strategy considerations.
+- 37.0	Create and design the game flow as it relates to story and plot.
+- 38.0	Assess common principles and procedures in game flow design.
+- 39.0	Describe player challenge rule creation elements. 
+- 40.0	Understand the use of inventory systems in game design.
+- 41.0	Identify functions of information processing.
+- 42.0	Test programs.
+- 43.0	Plan program design.
+- 44.0	Code programs.
+- 45.0	Perform program maintenance.
+- 46.0	Create and maintain documentation.
+- 47.0	Evaluate assigned game programming tasks.
+- 48.0	Implement enhanced program structures.
+- 49.0	Demonstrate the importance of health, safety, and environmental management systems in organizations and their importance to organizational performance and regulatory compliance. 
+- 50.0	Demonstrate leadership and teamwork skills needed to accomplish team goals and objectives. 
+- 51.0	Demonstrate personal money-management concepts, procedures, and strategies.
+- 52.0	Identify and describe basic network terminology and network security.
+- 53.0	Game configuration.
+- 54.0	Test programs.
+- 55.0	Plan program design.
+- 56.0	Create and maintain documentation.
+- 57.0	Code programs.
+- 58.0	Demonstrate an understanding of operating systems, environments, and platforms. 
+- 59.0	Implement enhanced program structures.
+- 60.0	Implement multimedia programming.
+- 61.0	Develop an understanding of programming techniques and concepts.

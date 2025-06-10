@@ -133,5 +133,5 @@ So, the top-left is (0,0) and the bottom-right is (127, 127). I want to challeng
 
 <details>
 <summary>SPOILERS</summary>
-If you wrote `pset(127, 0, 8)`, Great job! If not, I hope you gave it a few tries before seeing this answer. Remember, to get better at programming, we have to be willing to try and fail multiple times before looking up the answer. ***there are no shortcuts***.
+If you wrote <code>pset(127, 0, 8)</code>, Great job! If not, I hope you gave it a few tries before seeing this answer. Remember, to get better at programming, we have to be willing to try and fail multiple times before looking up the answer. <strong><em>there are no shortcuts!</em></strong>
 </details>

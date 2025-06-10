@@ -29,7 +29,7 @@ end
 function _update()
 end
 function _draw()
-	cls()
+  cls()
 end
 ```
 
@@ -38,12 +38,12 @@ Let's now add our first variable in `_init()` to hold how many clicks have occur
 
 ``` lua
 function _init()
-	score = 0
+  score = 0
 end
 function _update()
 end
 function _draw()
-	cls()
+  cls()
 end
 ```
 ### Conditionals
@@ -55,15 +55,15 @@ Inside the `if` statement we will increase the score variable by one by writing 
 
 ``` lua
 function _init()
-	score = 0
+  score = 0
 end
 function _update()
-	if (btnp(4)) then
-		score = score + 1
-	end
+  if (btnp(4)) then
+    score = score + 1
+  end
 end
 function _draw()
-	cls()
+  cls()
 end
 ```
 ### Show the Score
@@ -71,16 +71,16 @@ If we run the code we just wrote, not much will happen. This is because, while t
 
 ``` lua
 function _init()
-	score = 0
+  score = 0
 end
 function _update()
-	if (btnp(4)) then
-		score = score + 1
-	end
+  if (btnp(4)) then
+    score = score + 1
+  end
 end
 function _draw()
-	cls()
-	print(score)
+  cls()
+  print(score)
 end
 ```
 
@@ -93,17 +93,17 @@ We'll start by adding a `timer` variable that will represent the time the player
 
 ``` lua
 function _init()
-	timer = 60 * 30
-	score = 0
+  timer = 60 * 30
+  score = 0
 end
 function _update()
-	if (btnp(4)) then
-		score = score + 1
-	end
+  if (btnp(4)) then
+    score = score + 1
+  end
 end
 function _draw()
-	cls()
-	print(score)
+  cls()
+  print(score)
 end
 ```
 
@@ -112,18 +112,18 @@ In the `_update()` function we will make the timer count down by one each frame 
 
 ``` lua
 function _init()
-	timer = 60 * 30
-	score = 0
+  timer = 60 * 30
+  score = 0
 end
 function _update()
-	if (btnp(4)) then
-		score = score + 1
-	end
-	timer = timer - 1;
+  if (btnp(4)) then
+    score = score + 1
+  end
+  timer = timer - 1;
 end
 function _draw()
-	cls()
-	print(score)
+  cls()
+  print(score)
 end
 ```
 
@@ -136,19 +136,19 @@ Under `cls()` we will add `print(timer)` to show the current value of the `timer
 
 ``` lua
 function _init()
-	timer = 60 * 30
-	score = 0
+  timer = 60 * 30
+  score = 0
 end
 function _update()
-	if (btnp(4)) then
-		score = score + 1
-	end
-	timer = timer - 1;
+  if (btnp(4)) then
+    score = score + 1
+  end
+  timer = timer - 1;
 end
 function _draw()
-	cls()
-	print(timer)
-	print(score)
+  cls()
+  print(timer)
+  print(score)
 end
 ```
 
@@ -164,19 +164,19 @@ To do string concatenation in the `print()` function we must use double periods 
 
 ``` lua
 function _init()
-	timer = 60 * 30
-	score = 0
+  timer = 60 * 30
+  score = 0
 end
 function _update()
-	if (btnp(4)) then
-		score = score + 1
-	end
-	timer = timer - 1;
+  if (btnp(4)) then
+    score = score + 1
+  end
+  timer = timer - 1;
 end
 function _draw()
-	cls()
-	print("time left: " .. timer)
-	print("score: " .. score)
+  cls()
+  print("time left: " .. timer)
+  print("score: " .. score)
 end
 ```
 
@@ -189,20 +189,20 @@ We multiplied the amount of seconds we wanted our timer to last by thirty to con
 
 ``` lua
 function _init()
-	timer = 60 * 30
-	score = 0
+  timer = 60 * 30
+  score = 0
 end
 function _update()
-	if (btnp(4)) then
-		score = score + 1
-	end
-	timer = timer - 1;
+  if (btnp(4)) then
+    score = score + 1
+  end
+  timer = timer - 1;
 end
 function _draw()
-	cls()
-	print("time left: " .. 
-		timer/30)
-	print("score: " .. score)
+  cls()
+  print("time left: " .. 
+    timer/30)
+  print("score: " .. score)
 end
 ```
 
@@ -210,20 +210,20 @@ After running this, you may notice another problem. Because we used division, ou
 
 ``` lua
 function _init()
-	timer = 60 * 30
-	score = 0
+  timer = 60 * 30
+  score = 0
 end
 function _update()
-	if (btnp(4)) then
-		score = score + 1
-	end
-	timer = timer - 1;
+  if (btnp(4)) then
+    score = score + 1
+  end
+  timer = timer - 1;
 end
 function _draw()
-	cls()
-	print("time left: " .. 
-		flr(timer/30))
-	print("score: " .. score)
+  cls()
+  print("time left: " .. 
+    flr(timer/30))
+  print("score: " .. score)
 end
 ```
 
@@ -236,22 +236,22 @@ We'll add an `if` statement under `_update()` and above the one that checks when
 
 ``` lua
 function _init()
-	timer = 60 * 30
-	score = 0
+  timer = 60 * 30
+  score = 0
 end
 function _update()
-	if (timer > 0) then
-		if (btnp(4)) then
-			score = score + 1
-		end
-		timer = timer - 1;
+  if (timer > 0) then
+    if (btnp(4)) then
+      score = score + 1
 	end
+	timer = timer - 1;
+  end
 end
 function _draw()
-	cls()
-	print("time left: " .. 
-		flr(timer/30))
-	print("score: " .. score)
+  cls()
+  print("time left: " .. 
+    flr(timer/30))
+  print("score: " .. score)
 end
 ```
 
@@ -264,23 +264,23 @@ First, let's create a variable for the high score. Note that for this lesson we 
 
 ``` lua
 function _init()
-	timer = 60 * 30
-	score = 0
-	high_score = 0
+  timer = 60 * 30
+  score = 0
+  high_score = 0
 end
 function _update()
-	if (timer > 0) then
-		if (btnp(4)) then
-			score = score + 1
-		end
-		timer = timer - 1;
-	end
+  if (timer > 0) then
+    if (btnp(4)) then
+      score = score + 1
+    end
+  timer = timer - 1;
+  end
 end
 function _draw()
-	cls()
-	print("time left: " .. 
-		flr(timer/30))
-	print("score: " .. score)
+  cls()
+  print("time left: " .. 
+    flr(timer/30))
+  print("score: " .. score)
 end
 ```
 
@@ -292,27 +292,27 @@ If the timer is greater than zero, we are in "the actual game", but if not, we a
 
 ``` lua
 function _init()
-	timer = 60 * 30
-	score = 0
-	high_score = 0
+  timer = 60 * 30
+  score = 0
+  high_score = 0
 end
 function _update()
-	if (timer > 0) then
-		if (btnp(4)) then
-			score = score + 1
-		end
-		timer = timer - 1;
-	else
-		if (score > high_score) then
-			high_score = score;
-		end
-	end
+  if (timer > 0) then
+    if (btnp(4)) then
+      score = score + 1
+    end
+    timer = timer - 1;
+  else
+    if (score > high_score) then
+      high_score = score;
+    end
+  end
 end
 function _draw()
-	cls()
-	print("time left: " .. 
-		flr(timer/30))
-	print("score: " .. score)
+  cls()
+  print("time left: " .. 
+  flr(timer/30))
+    print("score: " .. score)
 end
 ```
 
@@ -322,31 +322,31 @@ In `_draw()` we'll add another `if` statement to check if the timer is less than
 
 ``` lua
 function _init()
-	timer = 60 * 30
-	score = 0
-	high_score = 0
+  timer = 60 * 30
+  score = 0
+  high_score = 0
 end
 function _update()
-	if (timer > 0) then
-		if (btnp(4)) then
-			score = score + 1
-		end
-		timer = timer - 1;
-	else
-		if (score > high_score) then
-			high_score = score;
-		end
-	end
+  if (timer > 0) then
+    if (btnp(4)) then
+      score = score + 1
+    end
+    timer = timer - 1;
+    else
+      if (score > high_score) then
+        high_score = score;
+      end
+  end
 end
 function _draw()
-	cls()
-	print("time left: " .. 
-		flr(timer/30))
-	print("score: " .. score)
-	if (timer < 1) then
-		print("high score: " .. high_score)
-		print("Press X to restart")
-	end
+  cls()
+  print("time left: " .. 
+    flr(timer/30))
+  print("score: " .. score)
+  if (timer < 1) then
+    print("high score: " .. high_score)
+    print("Press X to restart")
+  end
 end
 ```
 
@@ -356,39 +356,39 @@ We'll add `if (btnp(5) then` and write `timer = 60 * 30` inside. We also need to
 
 ``` lua
 function _init()
-	timer = 60 * 30
-	score = 0
-	high_score = 0
+  timer = 60 * 30
+  score = 0
+  high_score = 0
 end
 function _update()
-	if (timer > 0) then
-		if (btnp(4)) then
-			score = score + 1
-		end
-		timer = timer - 1;
-	else
-		if (score > high_score) then
-			high_score = score;
-		end
-		if (btnp(5)) then
-			timer = 60 * 30
-			score = 0
-		end
-	end
+  if (timer > 0) then
+    if (btnp(4)) then
+      score = score + 1
+    end
+    timer = timer - 1;
+  else
+    if (score > high_score) then
+      high_score = score;
+    end
+    if (btnp(5)) then
+      timer = 60 * 30
+      score = 0
+    end
+  end
 end
 function _draw()
-	cls()
-	print("time left: " .. 
-		flr(timer/30))
-	print("score: " .. score)
-	if (timer < 1) then
-		print("high score: " .. high_score)
-		print("Press X to restart")
-	end
+  cls()
+  print("time left: " .. 
+    flr(timer/30))
+  print("score: " .. score)
+  if (timer < 1) then
+    print("high score: " .. high_score)
+	print("Press X to restart")
+  end
 end
 ```
 
 And that is our MVP!
 
 ## Final Thoughts
-Even for an MVP this may seem like an awful lot of work, and I wont lie, programming is difficult. But, like any other skill, if you stick with it, you will get better and faster over time. You will be able to write more of your your own code and need to rely on tutorials less. I hope with this first lesson you see the potential fun and creativity that can only be expressed though game development. Have fun and keep learning! 
+Even for an MVP, this may seem like an awful lot of work.  I wont lie, programming is difficult. But, like any other skill, if you stick with it, you will get better and faster over time. You will be able to write more of your own code and you'll rely on tutorials less. I hope with this first lesson you see the potential, fun, and creativity that can only be expressed though game development. Have fun and keep learning! 

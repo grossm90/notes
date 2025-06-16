@@ -1,0 +1,34 @@
+*This section is from Level Up! The Guide to Great Video Game Design 3rd Ed. by Scott Rogers*
+
+## Video Game Genres
+
+The term **genre** is used to describe a category of something—often the categories used to describe books, movies, or music. For example, music can be rock and roll, gospel, or country. Movies can be action, romance, or comedies. Books can be drama, biographies, or horror; you get the idea.
+
+Video games are classified into genres, too, but here’s where it gets a little tricky. Games actually have two types of genres: **story genre** and **game genre**. Story genre describes the type of story, theme or narrative: fantasy, historical, sports, horror, etc. Game genre describes the type of gameplay: First person shooter, MOBA, match three, simulator, etc. Simple enough, right? We will talk about story genre later, but for now let’s look at some of the different types of game genres:
+
+-   **Action**: Games that rely on hand/eye coordination and player skill. There are lots of stylistic variations, making it one of the most diverse genres. Some of the earliest arcade games are action games.
+-   **Adventure**: Games that focus on characters (like in a role-playing game) but often don’t have the characters evolve in skill or ability. This genre is about story and lore, inventory management and often puzzle solving.
+-   **Augmented Reality (AR)**: Games that incorporate peripheral devices like cameras and global positioning systems (GPS) into gameplay. They create a “layer of unreality” over the real world for the player to interact with.
+-   **Auto Battler**: A game where the player constructs a “build” of cards, characters, etc., which are then tested against an adversary. Players merely observe the interaction to see how well their build did.
+-   **Card Battler**: Digital version of analog card game where the game automates several aspects of the setup and maintenance for the player. Often there are other elements such as music and effects to enhance the play experience.
+-   **Educational**: A game with the primary intention is to educate while entertaining. These games are often aimed at a younger audience.
+-   **MOBA (Multiplayer Online Battle Arena)**: A strategy game where two players (or teams of players) compete on a single battlefield. Players control characters while being supported by “creeps,” lesser strength helpers controlled by the computer.
+-   **MMO (Massively Multiplayer Online)**: Games that are primarily role-playing games that support many players at once. The gameplay often centers around character progression, quests, and “grinding,” doing several menial tasks over and over again for points or money.
+-   **Party**: A game specifically designed for several players who compete in a variety of styles of gameplay: from quizzes to games of skill.
+-   **Platformer**: Games where the player controls a character (often a publisher’s “mascot”) who runs and jumps their way across a series of hazardous landscapes to reach the other side of the playfield. This game genre is often viewed in a side-view perspective. A Metroidvania is a platformer subgenre that focuses on non-linear progression and exploration.
+-   **Puzzle**: Games based on logic, observation, and pattern completion. Sometimes they are slow and methodical, other times they require quick hand/eye coordination like an action game.
+-   **Real Time Strategy (RTS)**: A strategy game where the action takes place in real-time. Players must quickly respond to the action on screen or suffer the consequences.
+-   **Rhythm**: A game where the player must use a controller (or their body) to match a rhythm or beat to score points.
+-   **Rogue-Like**: Named after the 1980 computer game, a rogue-like is a role playing game (RPG) that takes place in a procedurally generated dungeon, often has grid or turn-based gameplay and the players suffer permanent death upon the loss of their character.
+-   **Serious**: At first glance, serious games seem similar to educational games but with a focus on social issues. But the genre is more diverse than that! Serious games are used to provide job training, advertise products or even to just exist as art!
+-   **Shooter**: Games that focus primarily on firing projectiles at other players or enemies. There are sub-genres such as SHUMPs (a contraction of “shoot ‘em up”) and “Bullet Hells.” It’s still one of the most popular genres (at least here in the West).
+-   **Simulation**: Games that focus on creating and managing a world. Or a theme park. Or a farm. Or the life of an adorable monster or a princess. Many simulations cross over into the realm of “toy games”—games that provide tools for creativity but have no rules or win/lose conditions.
+-   **Sports**: Games based on athletic competitions—from traditional sports to extreme ones. Like action games, there are many stylistic forms with this genre ranging from ultra-realistic simulations to fantasy variants. There is a subgenre of Sports Management games where you play as the sports team owner rather than the players.
+-   **Strategy**: Thinking, planning and executing are the hallmarks of strategy games. This is one of the oldest genres of games: strategy games’ roots are in ancient games like Senet, Mancala, Chess and Go.
+-   **Survival Horror**: Players of this genre are generally helpless against a supernatural threat. Jump scares, stealth, inventory management, and puzzle solving are key components to this genre.
+-   **Turn-Based**: Where the players take turns between actions. The pace of a turn-based game is slower and allows the player time to think and strategize.
+-   **Traditional**: These are games based on (but not always) games that existed in other, often physical, formats. Card games, board games and casino games fall into this genre.
+-   **Vehicle simulation**: Games where players simulate piloting or driving a vehicle, from a race car to a star fighter. There are a variety of stylistic and control options for the player, which can result in a fast-paced arcade-style experience or a slow-paced realistic simulation.
+-   **Virtual Reality**: Games where players use headsets and special controllers to see and navigate an all-encompassing virtual environment. Many genres of games fit within this genre, but there are special rules and control considerations that need to be made for this genre…as we shall see.
+
+This list is just the tip of the iceberg! In addition to the genres on this list, there are all types of subgenres and hybrid games. New genres are constantly being created. For example, 2015’s Crypt of the Necrodancer combines a rogue-like dungeon crawler with a rhythm game where players can only move or attack to the beat of the music! What’s next? What will be the most popular game genre in the future? Who knows? Perhaps you will create it!

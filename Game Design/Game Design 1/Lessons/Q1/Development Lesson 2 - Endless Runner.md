@@ -481,7 +481,13 @@ function collision()
 end
 ```
 
-Okay... the player character isn't really "ducking" so much as "going through the floor". There are a few fixes we can use, but we'll, again, take a little shortcut. We won't be able to see the line dip through the floor if we draw a floor that is always a layer above the player. In `_draw()` after the player and obstacles are drawn, we'll draw a brown floor in the 8-pixel gap we created at the bottom of the screen. Because the ground will be drawn last, it will be drawn on the top most layer. **_This is important. In PICO-8 everything gets drawn on top of everything that came before it_**. We'll draw this floor using a new function called `rectfill()` which takes in two coordinates for one corner of a rectangle, and two coordinates for the opposite corner, then a number for the color. The ground will start at the left side of the screen (𝑥 = 0) and just below the bottom of the player (𝑦 = 103 + 16 + 1 = 120). It will end at the very bottom-right of the screen (𝑥 = 127, 𝑦 = 127).
+Okay... the player character isn't really "ducking" so much as "going through the floor". There are a few fixes we can use, but we'll, again, take a little shortcut. We won't be able to see the line dip through the floor if we draw a floor that is always a layer above the player. 
+
+In `_draw()`, after the player and obstacles are drawn, we'll draw a brown floor in the 8-pixel gap we created at the bottom of the screen. Because the ground will be drawn last, it will be drawn on the top most layer. 
+
+> **_This is important. In PICO-8 everything gets drawn on top of everything that came before it_**. 
+
+We'll draw this floor using a new function called `rectfill()` which takes in two coordinates for one corner of a rectangle, and two coordinates for the opposite corner, then a number for the color. The ground will start at the left side of the screen (𝑥 = 0) and just below the bottom of the player (𝑦 = 103 + 16 + 1 = 120). It will end at the very bottom-right of the screen (𝑥 = 127, 𝑦 = 127).
 
 ```lua
 -- tab 0: main

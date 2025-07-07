@@ -313,7 +313,7 @@ Alight, but now we have the opposite problem, the UFO only moves left. We need t
 
 We'll generate a random number between 0 and 9 and check if that number is less than 1. This gives us a ten percent chance of the statement being `true` every frame. If it is `true`, we'll switch between `-1` and `1` by multiplying the value by `-1`.
 
-> **Important: We do this *a lot* in game programming. To get a number to switch between positive and negative, multiply it by -1.**
+> **Important: We do this _a lot_ in game programming. To get a number to switch between positive and negative, multiply it by -1.**
 
 ```lua
 -- tab 2 enemies

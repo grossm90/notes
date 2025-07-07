@@ -4,7 +4,7 @@ PICO-8 is described by their creators as a retro "fantasy console". In other wor
 
 ## Why Start with PICO-8?
 
-There is a popular quote in the arts and in engineering that goes "*Limitation breeds creativity*". Having unlimited resources can actually make it harder to create something, as our mind has a hard time choosing from a near infinite set of possibilities. The strict limitations of PICO-8 makes it easier to come up with and code our game ideas. Second, the strict limitations makes it easier to learn as well. In later lessons, we will move to a more complex game engine called Godot. Godot is a great engine, but is overwhelming for beginners as there are _so many_ features and settings to learn before we can make anything cool. You can think of starting our game development journey with PICO-8 as learning how to drive by starting on a go-kart.
+There is a popular quote in the arts and in engineering that goes "_Limitation breeds creativity_". Having unlimited resources can actually make it harder to create something, as our mind has a hard time choosing from a near infinite set of possibilities. The strict limitations of PICO-8 makes it easier to come up with and code our game ideas. Second, the strict limitations makes it easier to learn as well. In later lessons, we will move to a more complex game engine called Godot. Godot is a great engine, but is overwhelming for beginners as there are _so many_ features and settings to learn before we can make anything cool. You can think of starting our game development journey with PICO-8 as learning how to drive by starting on a go-kart.
 
 ## Boot Up & Terminal
 
@@ -16,15 +16,15 @@ One of the first things we see after booting up PICO-8 is "Type 'help' for help"
 
 ### Creating Folders/Directories
 
-After typing "help", we see a few commands that reference "dir" or "directory". These are just fancy names for what you already call a "folder". Remember: ***a directory is simply a folder***. So, to create a directory we type "`mkdir`" (short for "Make Directory"), then the SPACE bar, then we will type "`lessons`" to give the directory that name, and press the ENTER key to create the directory.
+After typing "help", we see a few commands that reference "dir" or "directory". These are just fancy names for what you already call a "folder". Remember: **_a directory is simply a folder_**. So, to create a directory we type "`mkdir`" (short for "Make Directory"), then the SPACE bar, then we will type "`lessons`" to give the directory that name, and press the ENTER key to create the directory.
 
 ### Seeing Inside a Directory & Changing Directories
 
-*Okay...* so we created a directory, but where is it? To see what is inside our current directory, we can type "`ls`" (short for "list"), and press the ENTER key. When we do this, we should see a single directory called "lessons"; the one we just created. To switch to that directory, we will type "`cd`" (short for "change directory"), then the SPACE bar, then we type the name of the directory we'd like to switch to; in this case "`lessons`", and press the ENTER key. We are now in the "lessons" directory. This is where we will save all of games that are part of the guided lessons. Later, we will make a "projects" directory where we will store projects, which are games we make on our own, without a guide.
+_Okay..._ so we created a directory, but where is it? To see what is inside our current directory, we can type "`ls`" (short for "list"), and press the ENTER key. When we do this, we should see a single directory called "lessons"; the one we just created. To switch to that directory, we will type "`cd`" (short for "change directory"), then the SPACE bar, then we type the name of the directory we'd like to switch to; in this case "`lessons`", and press the ENTER key. We are now in the "lessons" directory. This is where we will save all of games that are part of the guided lessons. Later, we will make a "projects" directory where we will store projects, which are games we make on our own, without a guide.
 
 ### Creating our First Cart
 
-Games in PICO-8 are called "carts" (short for "cartridge"). Older consoles such as the *Atari 2600*, *Nintendo Entertainment System (NES)*, and *Sega Genesis* used to cartridges before we switched to disks. We'll create our first cart by typing "`save`", then pressing the SPACE bar, then typing "`lesson_0_hello_world`" to give it that name, and then press the ENTER key to finish. We will write a simple program in this cart shortly, but first, let's finish exploring the terminal.
+Games in PICO-8 are called "carts" (short for "cartridge"). Older consoles such as the _Atari 2600_, _Nintendo Entertainment System (NES)_, and _Sega Genesis_ used to cartridges before we switched to disks. We'll create our first cart by typing "`save`", then pressing the SPACE bar, then typing "`lesson_0_hello_world`" to give it that name, and then press the ENTER key to finish. We will write a simple program in this cart shortly, but first, let's finish exploring the terminal.
 
 ### Hello, world!
 
@@ -39,7 +39,7 @@ print(str, [col])
 Print a string str and optionally set the draw colour to col.
 ```
 
-So what does this mean? "print" is the name of the function, and it accepts two arguments, "str" (short for **"string"**, which is another word for text) and "col" (short for "color"). Notice that there are **square brackets** `[]` around "col". This means that argument is optional. In other words, when we use the `print()` function, we _must_ put the text we would like to show in the parenthesis, and if we would like to, we *may* change the color, but we don't _have to_.
+So what does this mean? "print" is the name of the function, and it accepts two arguments, "str" (short for **"string"**, which is another word for text) and "col" (short for "color"). Notice that there are **square brackets** `[]` around "col". This means that argument is optional. In other words, when we use the `print()` function, we _must_ put the text we would like to show in the parenthesis, and if we would like to, we _may_ change the color, but we don't _have to_.
 
 Let's use this function now. In the terminal, type "`print("hello, world!")`" and press the ENTER key. If you see the text "Hello, World!" pop up on the line immediately under the function you wrote, congratulations! If not, check that every single character you typed is exactly as I wrote it. Remember that programming languages are _very_ picky, and expect everything to be written in a specific way. These specific instructions are called **syntax** and if we mess up the syntax, we create a **syntax error**.
 
@@ -84,7 +84,7 @@ It is (3, -1).
 
 Screen coordinates are similar to Cartesian coordinates, but with one major difference: **_the 𝑦-axis is flipped_**. This means that if a point is on the origin and it moves up, its 𝑦 location decreases (-1, -2, -3, ...) and if it moves down from the origin, the point's 𝑦 location increases (1, 2, 3, ...).
 
-Let's use the same point with the same movements as our last example, but we'll use screen coordinates instead of Cartesian coordinates. If we start with a point at the origin and it moves three whole steps right and one whole step down, what is the point's (𝑥, 𝑦) location? 
+Let's use the same point with the same movements as our last example, but we'll use screen coordinates instead of Cartesian coordinates. If we start with a point at the origin and it moves three whole steps right and one whole step down, what is the point's (𝑥, 𝑦) location?
 
 It is (3, 1). Notice that there is no difference for its 𝑥 position, it is still 3, but the 𝑦 position is opposite what it was before. Instead of its 𝑦 being -1, it is 1 because the 𝑦-axis flipped when we use screen coordinates.
 

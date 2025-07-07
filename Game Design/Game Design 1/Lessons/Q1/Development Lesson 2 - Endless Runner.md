@@ -355,7 +355,7 @@ function draw_obstacles()
     low_x,
     low_y + 8,
     8)
-    
+
   line(
     high_x,
     high_y,
@@ -481,11 +481,11 @@ function collision()
 end
 ```
 
-Okay... the player character isn't really "ducking" so much as "going through the floor". There are a few fixes we can use, but we'll, again, take a little shortcut. We won't be able to see the line dip through the floor if we draw a floor that is always a layer above the player. 
+Okay... the player character isn't really "ducking" so much as "going through the floor". There are a few fixes we can use, but we'll, again, take a little shortcut. We won't be able to see the line dip through the floor if we draw a floor that is always a layer above the player.
 
-In `_draw()`, after the player and obstacles are drawn, we'll draw a brown floor in the 8-pixel gap we created at the bottom of the screen. Because the ground will be drawn last, it will be drawn on the top most layer. 
+In `_draw()`, after the player and obstacles are drawn, we'll draw a brown floor in the 8-pixel gap we created at the bottom of the screen. Because the ground will be drawn last, it will be drawn on the top most layer.
 
-> **_This is important. In PICO-8 everything gets drawn on top of everything that came before it_**. 
+> **_This is important. In PICO-8 everything gets drawn on top of everything that came before it_**.
 
 We'll draw this floor using a new function called `rectfill()` which takes in two coordinates for one corner of a rectangle, and two coordinates for the opposite corner, then a number for the color. The ground will start at the left side of the screen (𝑥 = 0) and just below the bottom of the player (𝑦 = 103 + 16 + 1 = 120). It will end at the very bottom-right of the screen (𝑥 = 127, 𝑦 = 127).
 
@@ -629,10 +629,11 @@ end
 ```
 
 And there's our game! It certainly needs some polish before anyone would want to play it for fun, but the core mechanics are there for us to build on top of if we'd like to take this further.
+
 ## Final Thoughts
 
 So we have a player character that can jump, duck, and detect when it hits an obstacle. We have obstacles that continuously move left, giving the illusion of the player running to the right. And we have a score system that resets when we hit an obstacle and keeps track of our high score.
 
 We could build on this by creating a game over screen like our last game. We could also add more obstacles, as the game is pretty easy the way it is now.
 
-As we do these lessons, we should keep two things in mind. One, how can I use what I learned in previous lessons to make this game better? Two, how can I use what I learned in previous lessons and this lesson to make different games? 
+As we do these lessons, we should keep two things in mind. One, how can I use what I learned in previous lessons to make this game better? Two, how can I use what I learned in previous lessons and this lesson to make different games?

@@ -1,4 +1,4 @@
-*This section is from Level Up! The Guide to Great Video Game Design 3rd Ed. by Scott Rogers*
+_This section is from Level Up! The Guide to Great Video Game Design 3rd Ed. by Scott Rogers_
 
 ## Video Game Genres
 

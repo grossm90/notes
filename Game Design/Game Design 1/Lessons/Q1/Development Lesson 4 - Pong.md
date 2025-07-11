@@ -1,19 +1,19 @@
 ## What is Pong?
 
-Pong is a two player game with similar rules to tennis. Each player controls a rectangular paddle that can move up and down, and a ball moves around the screen. Each player's goal is to prevent the ball from making it past their paddle; scoring the other player a point.
+Pong is a two player game with similar rules to tennis. Each player controls a rectangular paddle that can move up and down, while a ball moves around the screen. Each player's goal is to prevent the ball from making it past their paddle; scoring the other player a point.
 
 ## Why Make Pong?
 
-Pong is a great next step for us as it will build on what we know about drawing shapes to the screen, controlling the player character with the arrow keys and keeping score. We'll be able to now get something to move in two dimensions, and we'll create a slightly smarter enemy than the UFOs that moved randomly..
+Pong is a great next step for us as it will build on what we know about drawing shapes to the screen, controlling the player character with the arrow keys, and keeping score. We'll now be able to get something to move in two dimensions, and we'll create a slightly smarter enemy than the UFOs that moved randomly.
 
 ## What will this Game Teach Me?
 
 The new game mechanics we will learn with this lesson are:
 
--   Moving an object on two-axes
 -   Keeping an object from leaving the screen
+-   Moving an object on two-axes
 -   Axis-Aligned Bounding-Box (AABB) Collision
--   How to get an enemy to chase an object
+-   How to get an NPC to chase an object
 
 ## Let's Get Started
 
@@ -32,7 +32,7 @@ function _draw()
 end
 ```
 
-As with last lesson, there are so many places we could start, and feel free to take a moment to think about where _you_ would start. We'll start with creating the player's paddle.
+As with last lesson, there are so many places we could start, and feel free to take a moment to think about where _you_ would start. We'll start by creating the player's paddle.
 
 ## The Player Paddle
 
@@ -42,20 +42,21 @@ We'll start by opening a new tab, in which we'll write some variables to define 
 -- tab 1 player
 player = {
   x = 5,
-  y = 52,
+  y = 55,
   width = 3,
   height = 16,
-  speed = 1
+  speed = 1,
+  score = 0
 }
 ```
 
-Now we create a function to draw the player paddle.
+Now we'll create a function to draw the player paddle. It'll be a simple rectangle.
 
 ```lua
 -- tab 1 player
 player = {
   x = 5,
-  y = 52,
+  y = 55,
   width = 3,
   height = 16,
   speed = 1,
@@ -89,13 +90,13 @@ end
 
 ### Moving the Player Paddle
 
-Moving the player's paddle will be very similar to how we moved the player's ship in the previous lesson. We will do something slightly differently. So far, we've updated variables by writing something like `x = x + 1`, but there is a faster way. In PICO-8, and most other programming languages, we can do the same thing by writing it like this `x += 1`. We'll use this method to update variables from now on.
+Moving the player's paddle will be very similar to how we moved the player's ship in the previous lesson. We will do something slightly differently, though. So far, we've updated variables by writing something like `x = x + 1`, but there is a faster way. In PICO-8, and most other programming languages, we can do the same thing by writing it like this `x += 1`. We'll use this method to update variables from now on.
 
 ```lua
 -- tab 1 player
 player = {
   x = 5,
-  y = 52,
+  y = 55,
   width = 3,
   height = 16,
   speed = 1,
@@ -136,13 +137,13 @@ function _draw()
 end
 ```
 
-Good, good. But, let's take this to the next level. This paddle, like our ship from last lesson, can go off the screen. Let's add some code that will prevent the paddle from leaving the screen. All we need is a couple of simple `if`statements that will check if the paddle went off the screen, and if it did, we'll just teleport it back.
+Good, good. But, let's take this to the next level. This paddle, like our ship from last lesson, can go off the screen. Let's add some code that will prevent the paddle from leaving the screen. All we need is a couple of simple `if` statements that will check if the paddle went off the screen, and if it did, we'll just teleport it back. All of this will happen in `_update()` before `_draw()` so the player will never see the paddle actually teleport.
 
 ```lua
 -- tab 1 player
 player = {
   x = 5,
-  y = 52,
+  y = 55,
   width = 3,
   height = 16,
   speed = 1,
@@ -176,13 +177,13 @@ You'll notice that one of the `if` statements checks if the `y` variable for the
 
 ## The Enemy Paddle
 
-We can use a lot of this code to also create the enemy paddle. We just have to be a little careful with the `x` variable for the enemy, as we'll need to do a little math to ensure it is the same amount of pixels away from the edge of the screen as the player paddle.
+We can use a lot of this code to also create the enemy paddle. We just have to be a little careful with the `x` variable for the enemy, as we'll need to do a little math to ensure it is the same amount of pixels away from the edge of the screen that the player paddle is. Little details like this keep our games looking professional.
 
 ```lua
 -- tab 2 enemy
 enemy = {
   x = 119,
-  y = 52,
+  y = 55,
   width = 3,
   height = 16,
   speed = 1,
@@ -206,7 +207,7 @@ function draw_enemy()
 end
 ```
 
-So why 119? There is a five-pixel gap between the right side of the screen and the left side of the player paddle. For the enemy paddle, we need to take that five and add the width of the paddle, which is three pixels, for a total of eight. 127 - 8 = 119.
+So why 119? There is a five-pixel gap between the left side of the screen and the left side of the player paddle. For the enemy paddle, we need to take that five and subtract the width of the paddle, which is three pixels, for a total of eight. 127 - 8 = 119.
 
 And we'll update the main tab.
 
@@ -241,7 +242,7 @@ ball = {
 }
 ```
 
-We'll draw the ball and update its location using its speeds.
+We'll draw the ball as a simple pixel, and update its location using its speeds.
 
 ```lua
 -- tab 3 ball
@@ -321,9 +322,9 @@ Awesome! If we run the game, the ball should go down and right, then bounce off 
 
 **AABB Collision Detection** is a fancy term that simply means, checking if two rectangular objects collide. To set this up can be quite tricky the first time, so as always, we'll take baby-steps. The ball for our pong game is a single pixel, which will make this easier than checking for collision with two large rectangles.
 
-What we want to do in code, is check `if` the 𝑥 location of the ball is `greater than` the the 𝑥 location of the paddle `and` check `if` the 𝑥 location of the ball is `less than` the the 𝑥 location of the paddle plus its width. We also have to check `if` the 𝑦 location of the ball is `greater than` the the 𝑦 location of the paddle `and` check `if` the 𝑦 location of the ball is `less than` the the 𝑦 location of the paddle plus its height. If all of this is `true`, the ball has touched the paddle and we reverse the ball's `x_speed` variable to get it to change direction.
+What we want to do in code, is check `if` the 𝑥 location of the ball is `greater than` the 𝑥 location of the paddle `and` check `if` the 𝑥 location of the ball is `less than` the 𝑥 location of the paddle plus its width. We also have to check `if` the 𝑦 location of the ball is `greater than` the 𝑦 location of the paddle `and` check `if` the 𝑦 location of the ball is `less than` the 𝑦 location of the paddle plus its height. If all of this is `true`, the ball has touched the paddle and we reverse the ball's `x_speed` variable to get it to change direction.
 
-This will also be the first custom function we make that will take in parameters. This is because we want this function to work for both paddles.
+This will also be the first custom function we make that will take in a parameter. This is because we want this function to work for both paddles.
 
 ```lua
 -- tab 3 ball
@@ -367,7 +368,7 @@ Now we need to call this function in both the `update_player()` and `update_enem
 -- tab 1 player
 player = {
   x = 5,
-  y = 52,
+  y = 55,
   width = 3,
   height = 16,
   speed = 1,
@@ -402,7 +403,7 @@ end
 -- tab 2 enemy
 enemy = {
   x = 119,
-  y = 52,
+  y = 55,
   width = 3,
   height = 16,
   speed = 1,
@@ -562,7 +563,7 @@ Now we just need to get the enemy to chase the ball. We can think of this as bei
 -- tab 2 enemy
 enemy = {
   x = 119,
-  y = 52,
+  y = 55,
   width = 3,
   height = 16,
   speed = 1,
@@ -601,7 +602,7 @@ And there's our game!
 
 ## Finishing Thoughts
 
-We created paddles, got them to move, and made certain that they cannot go off the screen. We created a ball that can move on both axes, bounces off the top and bottom of the screen, bounces off the paddles, and scores a point to the right player if it goes off the left or right side of the screen. Finally, we built simple enemy logic.
+We created paddles, got them to move, and made certain that they cannot go off the screen. We created a ball that can move on both axes, bounces off the top and bottom of the screen, bounces off the paddles, and scores a point to the right player if it goes off the left or right side of the screen. Finally, we built some simple enemy logic.
 
 As always, keep in mind the two very important questions we ask our self after every lesson.
 

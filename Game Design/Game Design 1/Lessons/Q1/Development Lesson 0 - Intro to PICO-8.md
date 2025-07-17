@@ -82,7 +82,11 @@ It is (3, -1).
 
 ### How are Screen Coordinates Different from Cartesian Coordinates?
 
-Screen coordinates are similar to Cartesian coordinates, but with one major difference: **_the 𝑦-axis is flipped_**. This means that if a point is on the origin and it moves up, its 𝑦 location decreases (-1, -2, -3, ...) and if it moves down from the origin, the point's 𝑦 location increases (1, 2, 3, ...).
+Screen coordinates are similar to Cartesian coordinates, but with one major difference: **_the 𝑦-axis is flipped_**. This means that if a point is on the origin and it moves up, its 𝑦 location decreases (-1, -2, -3, …) and if it moves down from the origin, the point's 𝑦 location increases (1, 2, 3, …).
+
+>[!IMPORTANT]
+>In PICO-8 **_the 𝑦-axis is flipped_**.
+>𝑦 **increases** as you go down the screen, and **decreases** as you go up the screen.
 
 Let's use the same point with the same movements as our last example, but we'll use screen coordinates instead of Cartesian coordinates. If we start with a point at the origin and it moves three whole steps right and one whole step down, what is the point's (𝑥, 𝑦) location?
 

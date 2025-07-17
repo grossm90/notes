@@ -47,7 +47,8 @@ We'll now draw a space ship in this slot of the sprite sheet. Notice that whatev
 
 Once we're done drawing, we're going to go back over to the code editor, and under the `cls()` function to clear the screen, we will import our ship with a new function `spr()`, short for "sprite". `spr()` takes in three mandatory parameters; the sprite number, an 𝑥 position, and a 𝑦 position. This function will draw the sprite of the number we choose at the 𝑥 and 𝑦 position that we choose. One important thing to note:
 
-> **A sprite's (𝑥, 𝑦) is its top-left corner**
+>[!IMPORTANT]
+> A sprite's (𝑥, 𝑦) is its top-left corner
 
 So, if try to place our new ship at the top-left of the screen (0,0) by writing `spr(1,0,0)`, we'll be able to see the whole thing, but if try to draw it at the top-right of the screen (127,0) by writing `spr(1,127,0)`, we'll only see the left column of pixels that make up our sprite. If we only see one column of our eight-pixel wide sprite, how many columns are not showing? Of course, the answer is seven. So to see the whole thing, we need to move the ship to the left by seven pixels by actually writing `spr(1,120,0)`. Now we see the whole thing!
 
@@ -313,7 +314,12 @@ Alight, but now we have the opposite problem, the UFO only moves left. We need t
 
 We'll generate a random number between 0 and 9 and check if that number is less than 1. This gives us a ten percent chance of the statement being `true` every frame. If it is `true`, we'll switch between `-1` and `1` by multiplying the value by `-1`.
 
-> **Important: We do this _a lot_ in game programming. To get a number to switch between positive and negative, multiply it by -1.**
+>[!IMPORTANT]
+> We do this _a lot_ in game programming. To get a number to switch between positive and negative, multiply it by -1.
+> 
+> Example:
+> `5 * -1 = -5`
+> `-5 * -1 = 5`
 
 ```lua
 -- tab 2 enemies

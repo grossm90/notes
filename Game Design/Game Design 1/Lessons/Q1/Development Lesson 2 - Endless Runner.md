@@ -485,7 +485,8 @@ Okay... the player character isn't really "ducking" so much as "going through th
 
 In `_draw()`, after the player and obstacles are drawn, we'll draw a brown floor in the 8-pixel gap we created at the bottom of the screen. Because the ground will be drawn last, it will be drawn on the top most layer.
 
-> **_This is important. In PICO-8 everything gets drawn on top of everything that came before it_**.
+>[!IMPORTANT]
+> In PICO-8 everything gets drawn on top of anything that came before it.
 
 We'll draw this floor using a new function called `rectfill()` which takes in two coordinates for one corner of a rectangle, and two coordinates for the opposite corner, then a number for the color. The ground will start at the left side of the screen (𝑥 = 0) and just below the bottom of the player (𝑦 = 103 + 16 + 1 = 120). It will end at the very bottom-right of the screen (𝑥 = 127, 𝑦 = 127).
 

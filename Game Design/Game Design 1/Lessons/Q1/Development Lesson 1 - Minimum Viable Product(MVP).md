@@ -240,7 +240,7 @@ function _draw()
 end
 ```
 
-After running this, you may notice another problem. Because we used division, our timer often includes a decimal which flashes very fast and is quite ugly. We only want the whole number. Thankfully this is easy to fix by rounding down with the `flr()` function (short for "floor"). Now the `print()` function for the timer will look like this `print("time left: " .. flr(timer/30))`.
+After running this, you may notice another problem. Because we used division, our timer often includes a decimal which flashes very fast and is quite ugly. We only want the whole number. Thankfully this is easy to fix by rounding up with the `ceil()` function (short for "ceil"). Now the `print()` function for the timer will look like this `print("time left: " .. ceil(timer/30))`.
 
 ```lua
 function _init()
@@ -256,7 +256,7 @@ end
 function _draw()
   cls()
   print("time left: " ..
-    flr(timer/30))
+    ceil(timer/30))
   print("score: " .. score)
 end
 ```
@@ -285,7 +285,7 @@ end
 function _draw()
   cls()
   print("time left: " ..
-    flr(timer/30))
+    ceil(timer/30))
   print("score: " .. score)
 end
 ```
@@ -315,7 +315,7 @@ end
 function _draw()
   cls()
   print("time left: " ..
-    flr(timer/30))
+    ceil(timer/30))
   print("score: " .. score)
 end
 ```
@@ -347,7 +347,7 @@ end
 function _draw()
   cls()
   print("time left: " ..
-    flr(timer/30))
+    ceil(timer/30))
   print("score: " .. score)
 end
 ```
@@ -377,7 +377,7 @@ end
 function _draw()
   cls()
   print("time left: " ..
-    flr(timer/30))
+    ceil(timer/30))
   print("score: " .. score)
   if timer < 1 then
     print("high score: " .. high_score)
@@ -415,7 +415,7 @@ end
 function _draw()
   cls()
   print("time left: " ..
-    flr(timer/30))
+    ceil(timer/30))
   print("score: " .. score)
   if timer < 1 then
     print("high score: " .. high_score)

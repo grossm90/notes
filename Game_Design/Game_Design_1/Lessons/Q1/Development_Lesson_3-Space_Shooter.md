@@ -455,10 +455,12 @@ Now, we need to convert the data for our enemies from separate variables to a ta
 -- tab 2 enemies
 enemies = {}
 
-add(enemies, {x = 63,
+add(enemies, {
+  x = 63,
   y = 0,
   speedx = -1,
-  alive = true})
+  alive = true
+})
 
 enemy_x = 63
 enemy_y = 0

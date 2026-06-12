@@ -41,13 +41,13 @@ end
 
 This looks a lot different from what we were coding in our last lesson, doesn't it? We see quite a few new words here like `function`, `_init()`, `_update()`, and `_draw()`. What's with writing `function` before what looks like a function? We didn't have to do that last time.
 
-Did you notice that `_init()`, `_update()`, and `_draw()` all have underscores `_` in front of them? That makes these what we call **virtual functions**. Virtual functions are special functions that already exist, but can also be modified. Compare that to a function we used last lesson, like `print()`. The folks who made PICO-8 wrote how `print()` works, and don't want anyone to mess with it. `_init()`, `_update()`, and `_draw()` on the other hand were made to be messed with!
+Did you notice that `_init()`, `_update()`, and `_draw()` all have underscores `_` in front of them? That makes these what we call **callback functions**. Callback functions are special functions that get called by the game engine, but by us. Compare that to a function we used last lesson, like `print()`. We decide when `print()` runs by calling it in our code when we want it to run. `_init()`, `_update()`, and `_draw()` on the other hand are called at very specific times by the PICO-8 engine.
 
 So, what do they do?
 
 #### `_init()`
 
-`_init()` (short for "Initialize") runs when a cart is first loaded with CTRL + 1, then it never runs again. In here we put game code that needs to run to set everything up, but doesn't need to run over and over again.
+`_init()` (short for "Initialize") runs when a cart is first loaded with CTRL + r, then it never runs again. In here we put game code that needs to run to set everything up, but doesn't need to run over and over again.
 
 #### `_update()`
 
@@ -354,7 +354,7 @@ end
 
 Cool! Now let's show that high score on the game over screen.
 
-In `_draw()` we'll add another `if` statement to check if the timer is less than one by writing `if timer < 1 then` and adding `print("high score: " .. high_score)`. We'll also let the player know that they can press the X button to restart the game. And let's not forget `end`.
+In `_draw()` we'll add another `if` statement to check if the timer is less than or equal to zero by writing `if timer <= 0 then` and adding `print("high score: " .. high_score)`. We'll also let the player know that they can press the X button to restart the game. And let's not forget `end`.
 
 ```lua
 function _init()
@@ -379,7 +379,7 @@ function _draw()
   print("time left: " ..
     ceil(timer/30))
   print("score: " .. score)
-  if timer < 1 then
+  if timer <= 0 then
     print("high score: " .. high_score)
     print("Press X to restart")
   end
@@ -417,7 +417,7 @@ function _draw()
   print("time left: " ..
     ceil(timer/30))
   print("score: " .. score)
-  if timer < 1 then
+  if timer <= 0 then
     print("high score: " .. high_score)
     print("Press X to restart")
   end

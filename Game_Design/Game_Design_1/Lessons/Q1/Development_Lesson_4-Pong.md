@@ -557,7 +557,7 @@ end
 
 ## Moving the Enemy
 
-Now we just need to get the enemy to chase the ball. We can think of this as being the same as what we do when we play. If the ball is above our paddle, we move our paddle up. If the ball is below our paddle, we move our paddle down. We'll check if the ball is above or below the middle of the enemy's paddle and move it accordingly. Note that enemy will never miss the ball this way. I'll leave it to you to find out how to use `rnd()` in a creative way to get the enemy to miss every now and then.
+Now we just need to get the enemy to chase the ball. We can think of this as being the same as what we do when we play. If the ball is above our paddle, we move our paddle up. If the ball is below our paddle, we move our paddle down. We'll check if the ball is above or below the middle of the enemy's paddle and move it accordingly. Note that enemy will never miss the ball this way. I'll leave it to you to find a creative way to get the enemy to miss every now and then.
 
 ```lua
 -- tab 2 enemy

@@ -1,0 +1,1 @@
+A **video game** is an BLANK activity with a BLANK/BLANK condition that is interacted with through a video BLANK.

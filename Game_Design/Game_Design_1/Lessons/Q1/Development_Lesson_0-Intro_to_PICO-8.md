@@ -12,7 +12,7 @@ When you first open PICO-8, you will see the boot up screen which is a simple an
 
 ### Help!
 
-One of the first things we see after booting up PICO-8 is "Type 'help' for help". If we type "`help`" into the terminal and press the ENTER key, we will see a helpful reference of all the commands we can type into the terminal and what they do. Every one of these commands is important for tasks that we will complete on our game dev journey, but for right now, let's focus on navigating and creating files and folders.
+One of the first things we see after booting up PICO-8 is "Type help for help". If we type "`help`" into the terminal and press the ENTER key, we will see a helpful reference of all the commands we can type into the terminal and what they do. Every one of these commands is important for tasks that we will complete on our game dev journey, but for right now, let's focus on navigating and creating files and folders.
 
 ### Creating Folders/Directories
 

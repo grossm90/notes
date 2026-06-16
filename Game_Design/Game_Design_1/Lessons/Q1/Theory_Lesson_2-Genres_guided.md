@@ -1,0 +1,25 @@
+
+-   **Action**: BLANK
+-   **Adventure**: BLANK
+-   **Augmented Reality (AR)**: BLANK
+-   **Auto Battler**: BLANK
+-   **Card Battler**: BLANK
+-   **Educational**: BLANK
+-   **MOBA (Multiplayer Online Battle Arena)**: BLANK
+-   **MMO (Massively Multiplayer Online)**: BLANK
+-   **Party**: BLANK
+-   **Platformer**: BLANK
+-   **Puzzle**: BLANK
+-   **Real Time Strategy (RTS)**: BLANK
+-   **Rhythm**: BLANK
+-   **Rogue-Like**: BLANK
+-   **Serious**: BLANK
+-   **Shooter**: BLANK
+-   **Simulation**: BLANK
+-   **Sports**: BLANK
+-   **Strategy**: BLANK
+-   **Survival Horror**: BLANK
+-   **Turn-Based**: BLANK
+-   **Traditional**: BLANK
+-   **Vehicle simulation**: BLANK
+-   **Virtual Reality**: BLANK

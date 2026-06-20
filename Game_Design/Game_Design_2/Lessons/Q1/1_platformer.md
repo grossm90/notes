@@ -48,8 +48,36 @@ To add frames from a sprite-sheet in our `res://assets` folder, look for the sec
 
 You probably wont be able to see the knight at first as we are working with pixel art which is pretty small on modern screens. Press the `F` key to center this node on the screen and zoom in until you see the knight. You should notice two issues. One, the art is blurry, and two it isn't animated. Let's fix the blurriness first.
 
-At the very top-left of the screen, find the "Project" menu and select "Project Settings...". Under "∨ Rendering", select "Textures". Change "Default Texture Filter" from Linear to "Nearest", and then close the window. The art should look much more crisp. Select the `PlayerSprite` from the node tree if it isn't already select to re-open the "SpriteFrames" window at the bottom of the screen. To preview the animation, click on the play button "▶" in the "Animation Frames:" toolbar. The knight should bounce up and down. It's a little slow though. Let's speed up the animation by changing the "Animation Speed" setting under "Animations:" from 5 to "10". The animation should play a little faster now.
+At the very top-left of the screen, find the "Project" menu and select "Project Settings...". Under "∨ Rendering", select "Textures". Change "Default Texture Filter" from Linear to "Nearest", and then close the window. The art should look much more crisp. Select the `PlayerSprite` from the node tree if it isn't already select to re-open the "SpriteFrames" window at the bottom of the screen. To preview the animation, click on the play button "▶" in the "Animation Frames:" toolbar. The knight should bounce up and down. It's a little slow though. Let's speed up the animation by changing the "Animation Speed" setting under "Animations:" from 5 to "10". The animation should play a little faster now. While we're here, let's also turn on "Autoplay". It's the little arrow with small "A" inside of it to the right of the trashcan. This will start the animation as soon as the player is loaded into the scene.
 
 With the animation out of the way, let's move on to hitbox.
 
 ### Adding a Hitbox to the Player Scene
+
+To add a hitbox to the player, we need to create another child node to the root. Right-click on the `Player` node and select "Add Child Node". This time we will search for "CollisionShape2D", add it to the node tree and rename it to "PlayerHitbox". Select it in the node tree and look over to the inspector. At the top is a property called "Shape". Click on the drop-down menu and select "New CircleShape2D". A bluish circle should appear with two grips. One of these grips changes the diameter of the circle and the other changes its location. Size the circle so it fits completely inside the sprite graphics (nothing is more annoying than getting hurt by an enemy that clearly missed your player), and move the circle so the bottom just barely makes contact with the knight's feet. Don't worry about getting perfect placement, as you will be able to adjust this at any time in the future.
+
+Our player is done for now, so let's save this scene by pressing `Ctrl+S`.
+
+## Adding the `Player` Scene to the `MainGame` Scene
+
+Nesting scenes in Godot is fairly simple. Let's switch back to the `MainGame` scene by selecting its tab at the top of the editor. Then, from the "FileSystem" window in the bottom-right, open the "`scenes`" folder and drag "`Player.tscn`" into the main window of the editor. You should see the knight right away (though you may need to zoom in).
+
+Now we need a camera to follow our player around.
+
+### Adding a Camera to our `Player`
+
+Now that we have two nodes in the `MainGame` scene, the root `MainGame` node and the `Player` node, which should the camera be a child of? Well, we want the camera to follow the player around, so that should make this choice fairly obvious. Right-click on the `Player` node and select "Add Child Node". From the list of nodes, search for "Camera2D" and add it to the node-tree. Rename it to "PlayerCamera". If you zoom out, you'll see a purple rectangle. This represents the borders of our camera. The default is zoomed out too far. In the Inspector change the zoom property to "4" for "x" and "y" (they are linked, so changing one should automatically update the other).
+
+We can now test our game again, but this time actually see something (our animated knight). Click on the play button "▶" on the top-right of the editor and the game should launch with the knight bouncing on the screen. Press the stop icon "■".
+
+Lets add some movement!
+
+## Our First Script
+
+Nodes and their properties in the Inspector will only get us so far. At some point we must write code for our game. In Godot, code is written inside of a *script*, which can then be attached to a node to modify its behavior.
+
+Switch back to the player scene by using the tabs on the top of the editor. Right click on the root `Player` node and click "Attach Script". Now, because this node is a `CharacterBody2D`, Godot has a built-in template script for handling 2D movement. How convenient! You should see the template already applied in the pop-up window. We'll leave that and most other settings alone. The one thing we want to change is where this script is saved. Click on the folder icon "🗀". In this pop-up window click on the "Create Folder"  button, and name the new folder "scripts", and save this script here. You should see the "Path:" option update. Click the "Create" button to finish attaching the script.
+
+You'll see a lot of code here. Don't be intimidated by this as most of it will be perfect for this lesson. You can test the game again now, but it won't look like much has changed. In fact, the player is actually falling, but because the camera is following it and there is no scenery, its hard to tell. Stop the game and let's add some platforms.
+
+## `TileMapLayer`

@@ -103,3 +103,38 @@ Now that we can move around the map, some things may feel a little off. The came
 Now go to the script attached to `Player` and change `SPEED` to `130.0` and `JUMP_VELOCITY` to `-300.0`
 
 Test the game again to make sure things feel nice.
+
+## Platforms
+
+A *platform* in a 2D platformer is a part of the level where the player can jump onto them from the bottom, and land on the top. Godot has this functionality built in. Some platforms also move. Godot makes this simple as well.
+
+### Static Platforms
+
+Create a new scene my clicking on the plus sign "+". at the top of the editor where the tabs are. Click on the "Other Node" button in the "Scene" section, search for and add "AnimatableBody2D" as the root node. Rename it to "Platform". Let's give this platform some graphics. Add a child node to the root called "Sprite2D" and rename it to "PlatformSprite". In the inspector, find the "Texture" property, you'll see "\<empty\>". Go to the "FileSystem" section, go inside the "assets" folder and the "sprites" folder. Drag "`platforms.png`" into that "\<empty\>" section. You'll see that this too is a sprite-sheet with multiple platform graphics, we only want one. Back in the inspector, find the drop-down labeled "∨Region", inside check the "Enabled" property, then click on the "Edit Region" button. An editor window will pop up. Inside, on the top-left change the "Snap Mode:" to "Pixel Snap". Now, create a box around the top-right green platform and click "Close".
+
+Add a child node to the `Platform` node called "CollisionShape2D" and rename it to "PlatformHitbox. Make the "Shape" a rectangle and fit it to the art.
+
+Save this scene with `Ctrl+S`, go back to the `MainGame` scene, and drag a `Platform` scene into the level above the knight's head.
+
+Test the game. You should be able to jump on to it from the side, but you'll bump your head if you try to jump onto it from below.
+
+Go back to the `Platform` scene, select the "PlatformHitbox" node, and look to the inspector. Click the "On" check-box for the "One Way Collision" property. You should now be able to pass through the bottom, and stand on the top.
+
+One problem though, is the knight goes behind the platform when they intersect. This is because, by default, Godot draws everything in order of the scene tree. We don't want to have to move everything in the scene tree to fix this, so instead we will use something called *Z Index*. Go the the `Player` scene, select the root `Player` node, and look to the Inspector. Under "CanvasItem" look for "∨Ordering". Click on it to reveal more properties. Change "Z Index" from 0 to "5".
+
+Test this again and the knight should now go in front of the platform.
+
+### Moving Platforms
+
+Drag another `Platform` scene into the level, right-click on it, and add a child node called "AnimationPlayer" and rename it to "PlatformMover".
+
+Click back on the `Platform2` node and look to the inspector. Find "∨Transform", inside, you'll see "Position". To the right of the number box you'll see a symbol of a key; click on it. Click the "Create" button on the pop-up window.
+
+A small white diamond should now be added to the animation timeline at the bottom of the editor. This is called a *keyframe*. Let's add another one at the end of the timeline. Drag the blue marker to the end of the timeline. Now, drag the platform to the right while holding the `Shift` key to lock the movement to a single axis. Once you have it where you'd like it to stop before heading back to where it started, go back to the key symbol in the Inspector. Click it to add another keyframe. Press the play button in the "Animation" section and you should see the platform move from its first keyframe to its second, then stop. Of course, we don't want it to stop. Look to the top-left of the "Animation" section and you should see a button with two arrows making a loop "🗘"; click this button. Now the platform will move from the first keyframe to the second, then snap back to the first. Click that button again to enable "ping-pong" mode; this is what we want.
+
+Depending on how far the two position keyframes are from each other, the platform may be moving too fast. We can slow things down by increasing the timeline. By default, it is one second. Next to the button we used to make the animation ping-pong is the box to edit the total time of the timeline. Change it from 1 to "1.5",  then drag the second keyframe to the end of the timeline. The platform should now be a little slower.
+
+Finally, let's get the animation to play as soon as the platform is loaded into the scene be clicking on the autoplay button next to the "Edit" button.
+
+## Pickups
+

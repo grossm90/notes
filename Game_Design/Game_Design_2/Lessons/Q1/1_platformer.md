@@ -146,4 +146,45 @@ Rename the root node to "Coin",  then add an "AnimatedSprite2D" child node. Go t
 
 Drag a few coins on to the level and test the game. The coins won't do anything when you walk into them, but you should see them and they should be animated.
 
+### Our First Custom Script
+
+Switch to the `Coin` scene and attach a new script to the root node. Ensure the path is set so the script is saved to our `scripts` folder. Also, set the template to "Node: Default", and create the script.
+
+The template will load some barebones code for us. You'll see two functions `_ready()` which runs once when the node is loaded into the scene, and `_process(delta)` which runs every frame while the node exists in the node-tree. Inside of `_ready()`, let's write a little test script to see how things work. Print "I'm a coin!" and test the game.
+
+```gdscript
+extends Area2d
+
+func _ready():
+	print("I'm a coin!")
+
+func _process(delta):
+	pass
+```
+
+You should see "I'm a coin!" repeated for each coin you dragged into the `MainGame` scene, but they still wont disappear when we touch them.
+
+#### Signals
+
+To get the coins to disappear when the player touches them we will need to use a Godot *signal*. Signals are very powerful as they allow nodes to interact with one another. In this case, we want the hitbox for coin to interact with the player's hitbox. To access the signals for the `Coin`scene, make sure that scene is active and look to the Inspector. You'll see a tab at the top labeled "Node". Click that tab and you'll see the signals. Remember that the `Coin`'s root node is an `Area2D` which has a lot of signals related to when objects enter or leave its associated hitbox. The one we want is labeled "body_entered(body: Node2D)". Double-click on this signal, then click the "Connect" button. The function `_on_body_entered(body)` should now be added to the script. Inside of the this function print "+1 coin!" and `queue_free()` and test the game.
+
+```gdscript
+extends Area2d
+
+func _ready():
+	print("I'm a coin!")
+
+func _process(delta):
+	pass
+	
+func _on_body_entered(body):
+	print("+1 coin!")
+	queue_free()
+```
+
+The coins should disappear now.
+
+There is one small bug though. Drag another coin into the level and place it in the path of the moving platform and test the game. The platform collects the coin! This is because the signal is firing when *any* body with a hitbox enters it. We only want the player to be able to collect it. To do this, go to the `Player` scene and look to the Inspector. If that area of the editor is still on the signals, switch back to the "Inspector" tab. Click on he "∨Collision" drop-down and you'll see a bunch of numbered boxes. In the "Layer" property, turn off "1" and turn on "2". Switch to the `Coin` scene and go to the same area, but this time do not touch the Layer property, instead do this to the "Mask" property; turn off "1" and turn on "2". Now only the player can collect the coins.
+
+## Dying
 

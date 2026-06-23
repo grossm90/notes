@@ -138,3 +138,12 @@ Finally, let's get the animation to play as soon as the platform is loaded into 
 
 ## Pickups
 
+Let's create a coin pickup. Just like every new object, this will be a new scene.
+
+Create a new scene and make the root node an "Area2D" node. This allows us to create a hitbox that we can use to code all kinds of interactive behavior, such as increasing our score.
+
+Rename the root node to "Coin",  then add an "AnimatedSprite2D" child node. Go through the same process of adding sprite-frames as we did with the player, but using the `coin.png` sprite-sheet. Now add a "CollisionShape2D" child node to the root node, and create a circle shape that matches the graphics of the coin. Save this scene with `Ctrl+S` and go back to the `MainGame` scene.
+
+Drag a few coins on to the level and test the game. The coins won't do anything when you walk into them, but you should see them and they should be animated.
+
+

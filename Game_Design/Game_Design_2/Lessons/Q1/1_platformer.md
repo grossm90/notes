@@ -188,3 +188,72 @@ There is one small bug though. Drag another coin into the level and place it in 
 
 ## Dying
 
+### Limiting the Camera
+
+When we fall off of the level, we have two issues. One, we don't die so we fall for ever. Two, the camera follows our infinite descent. Let's fix the second issue now.
+
+Click on the `PlayerCamera` node and look to the inspector. Look for the "∨Limit" drop-down and expand it. Now, we want to apply a "Bottom" limit, but how much? Godot provides a handy ruler tool for questions like this. The ruler is at the top of the editor and looks like a little right-triangle. Click this button, then find the x-axis, which is a horizontal red line. Click on the x-axis and drag down to your lowest tile on the map. Pick a nice round number that is close to the reading from the ruler. For me this is 120px. Put that number in the "Bottom" property for the camera limit, check the box for "Smoothed", and test it out. Now when you fall off the map the camera should stop near the bottom of the map.
+
+### Restarting the Game
+
+Now let's get the game to reset with a *killzone*. Let's create a new scene. What node allows us to define a hitbox, then perform some code or action when something enters it? `Area2D`, which we will make the root node, and rename it to "Killzone". In the inspector under the Collision drop down, we'll deselect 1 under "Mask" and select "2", just as we did with the `Coin` scene so it only affects the player.
+
+We want this scene to be very flexible, so we won't set the hitbox here in the scene. Instead, we'll define the hitbox for each instance of the `Killzone` individually. Let's drag a `Killzone` scene into the level to act as the death-floor. Right-click on it in the node-tree and add a `CollisionShape2D` as a child node. For the shape, we will select "New WorldBoundaryShape2D". This is an infinite line, perfect for a death-floor. Select the parent `Killzone` node and drag it under the lowest tile of your map so it correctly kills the player when they fall.
+
+Now, switch back to the `Killzone` scene and attach a new script to the root node, making sure to save it in the `scenes` folder. We're going to add a `body_entered(body: Node2D)` signal like we did with coin. Let's quickly test that this is working with by printing "You died!".
+
+```gdscript
+extends Area2d
+	
+func _on_body_entered(body):
+	print("You died!")
+```
+
+Test the game, fall off the map and look to the console. You should see the message.
+
+#### Delaying Actions with Timers
+
+Now to actually restart the game. First, we want to add a little delay, the reload should not be instant as that would be pretty jarring for the player. Right-click on the root node and add a `Timer` child node. Hold `Ctrl` as you drag the timer node from the node tree into the script. That should result in this:
+
+```gdscript
+extends Area2d
+
+@onready var timer = $Timer
+	
+func _on_body_entered(body):
+	print("You died!")
+```
+
+What this does is allow us to access the `Timer` node from the parent `Killzone` node using the variable name `timer`. Like pretty much every node, the `Timer` node comes with a ton of useful functions that we can call by typing the name of the variable followed by a dot ".", then the function's name like this: `timer.functionName()`. The function we want is called `start()`, and starts the timer.
+
+```gdscript
+extends Area2d
+
+@onready var timer = $Timer
+	
+func _on_body_entered(body):
+	print("You died!")
+	timer.start()
+```
+
+Now we need another signal. A `Timer` node sends out a signal when the timer reaches "0.0". This signal is called `timeout()`. Connect this signal to the current script and add the line `get_tree.reload_current_scene()` which effectively starts the game from scratch.
+
+```gdscript
+extends Area2d
+
+@onready var timer = $Timer
+	
+func _on_body_entered(body):
+	print("You died!")
+	timer.start()
+	
+func _on_timer_timeout():
+	get_tree.reload_current_scene()
+```
+
+Test the game and jump off the map.
+
+Now, there are many ways to handle player death, and this one is rather extreme, but simple to implement. We'll touch on more sophisticated methods in later projects.
+
+## Backrounds
+

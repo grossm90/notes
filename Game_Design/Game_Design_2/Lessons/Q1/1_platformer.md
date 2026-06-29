@@ -84,7 +84,7 @@ You'll see a lot of code here. Don't be intimidated by this as most of it will b
 
 The `TileMapLayer` node allows us to create grid-based maps using a tile-map from a sprite sheet called a "Tile Set. This makes creating 2D levels very easy and is perfect for our current goal.
 
-Right-click on the `MainGame` node, select "Add Child Node" and select "TileMapLayer". Similar to adding sprites to our player, go over to the inspector, find the "Tile Set" property, click on the drop-down arrow "∨", and select "New TileSet". Then, click on the word "TileSet",  and the section at the bottom of the editor should update. There should be a little error message that says that the TileMap does not have a TileSet source. Switch from TileMap, to "TileSet" at the very bottom of the editor. There will be a section that is labeled "Tiles". There is a plus sign "+" at the bottom that will bring up the file explorer. Navigate to `res://assets/sprites/world_tileset.png`. Godot should ask if you'd like it to automatically slice the sprite-sheet into tiles. You can click "Yes" for this, as this sprite-sheet is much more uniform than the knight is, and should get sliced cleanly. 
+Right-click on the `MainGame` node, select "Add Child Node" and select "TileMapLayer". Right-click on this new node and rename it to "Level". Similar to adding sprites to our player, go over to the inspector, find the "Tile Set" property, click on the drop-down arrow "∨", and select "New TileSet". Then, click on the word "TileSet",  and the section at the bottom of the editor should update. There should be a little error message that says that the TileMap does not have a TileSet source. Switch from TileMap, to "TileSet" at the very bottom of the editor. There will be a section that is labeled "Tiles". There is a plus sign "+" at the bottom that will bring up the file explorer. Navigate to `res://assets/sprites/world_tileset.png`. Godot should ask if you'd like it to automatically slice the sprite-sheet into tiles. You can click "Yes" for this, as this sprite-sheet is much more uniform than the knight is, and should get sliced cleanly. 
 
 There is one small issue to fix. The top of the palm tree got sliced into nine separate tiles, but we would never place some, but not all of them. Click the icon of the eraser in to toolbar at the top of this section and then click on each of the nine squares that make up the top of the palm tree. Those tiles should go dark. Now, turn off the eraser tool by clicking on it again. Finally, click on the top-left tile that made up the top of the palm tree and drag to the bottom-right. Now this will act as a single, large tile.
 
@@ -255,5 +255,9 @@ Test the game and jump off the map.
 
 Now, there are many ways to handle player death, and this one is rather extreme, but simple to implement. We'll touch on more sophisticated methods in later projects.
 
-## Backrounds
+## Backgrounds
+
+A background is simply an additional `TileMapLayer` that loads on a z-layer *under* the `TileMapLayer` that holds the level. Create a new `TileMapLayer` node and drag it so it is directly above the `Level` node. Use the same process for adding the tile set as we did earlier, then paint in the background tiles.
+
+## Enemies
 

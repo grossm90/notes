@@ -261,3 +261,57 @@ A background is simply an additional `TileMapLayer` that loads on a z-layer *und
 
 ## Enemies
 
+As you may have guessed, our enemy will be scene. Add a new scene and make the root node a basic "`Node2D`" and rename it to "Slime". Create a child-node of type "`AnimatedSprite2D`", rename it to `SlimeAnimation`, and add the sprite sheet `slime_green.png` the same way we did for the player and the coin. Only add the middle row of sprite frames, as the bottom row is a separate animation for when it takes damage, and the top is for the enemy "waking up" from a sleeping state.
+
+### Getting Fancy with Nested Scenes
+
+So we've already shown how helpful nesting scenes can be with the example of creating a single `Coin` scene that can then be *instantiated* all throughout a level with a simple drag-and-drop. Let's take that idea to the next level. Let's nest our `Killzone` scene, which is responsible for resetting our level on death, into the enemy, which will then be nested into our level; a nest within a nest!
+
+Drag the `Killzone` scene from the FileSystem into the `Enemy` scene so that it is a child of `Slime` (not `SlimeAnimation`). Create a `CollisionShape2D` child-node and rename it `SlimeHurtbox`. A *hurtbox* is different from a hitbox. A hitbox is typically responsible for physics collisions such as checking if an object is touching the ground or not, while a hurtbox deals damage to anything inside of it. Give this node a rectangular collision shape and fit it to the sprite. Remember to make it slightly smaller for fairness.
+
+Now is a good time to save the scene. Use `Ctrl + S` to do so and name it `slime.tscn`. Make sure to save it in the "scenes" folder.
+
+### Enemy Movement
+
+We could get the enemy using an animation player as we did with the platform, but this project is all about learning various game mechanics. Let's use a script this time. Attach a script to the root `Slime` node, making sure to save it into the "scripts" folder. Delete the code for `_ready()` function, as we will not need this. Under the `_process(delta)` function, delete `pass` and replace it with `position.x += 60 * delta`. The whole script should look like:
+
+```gdscript
+extends Node2D
+
+func process(delta):
+	position.x += 60 * delta
+```
+
+#### Understanding Delta Time
+
+*Delta time* is a very important concept in game design. In movies and T.V. frames are shown on the screen consistently (around 30 FPS), but video games load frames as quickly as possible. Expensive gaming computers can run games at 200 FPS and beyond, while a cheaper computer may struggle to get 60 FPS. This inconsistency can completely break a game if we do not account for it in the code. 
+
+For example, let's imagine we were to move our enemy at one pixel a frame. A player on a budget laptop might only be able to play our game at 30 FPS. This means the enemy will move 30 pixels in one second. A player on a decent desktop PC might get double the FPS and run our game at 60 FPS. For this player the enemy moves twice as fast! The enemy will move to the right 60 pixels in one second.
+
+So what is delta time and how does it fix this? Delta time is the time it took to load the previous frame. This normalizes the movement when you multiply by it because you take the movement speed (1) and multiply it by the time it took to load the last frame (1/30 for the slow laptop or 1/60 for the desktop). This does have an important effect on the number we use to move the enemy, however. Before, moving something by one pixel meant that it would move one pixel *a frame*. Now, moving something by one pixel, means it will move 1 pixel *a second*. This means we have to use much larger values when using delta time. This is why you see 60 in the code above. That being said, let's get rid of that *magic number* by turning it into a constant we can teak if needed.
+
+```gdscript
+extends Node2D
+
+const SPEED: int = 60
+
+func process(delta):
+	position.x += SPEED * delta
+```
+
+### Ray Casts
+
+If you tested the game with this new code with an enemy on your level, you'll notice that the enemy just moves to the right. It'll ignore all walls and gravity. Let's get the enemy to turn around any time it bumps into a wall using a *ray cast*. A ray cast is a line that stems from an object, and we can code an event to happen when the end of that line touches something. First, let's add a variable to the `Slime` that will allow us to turn it around.
+
+```gdscript
+extends Node2D
+
+const SPEED: int = 60
+
+var direction: int = 1
+
+func process(delta):
+	position.x += direction * (SPEED * delta)
+```
+
+Now, if `direction` is 1 the enemy will move right, and if it is -1 the enemy will move left. Add a child-node to `Slime` called "RayCast2D". 

@@ -314,4 +314,90 @@ func process(delta):
 	position.x += direction * (SPEED * delta)
 ```
 
-Now, if `direction` is 1 the enemy will move right, and if it is -1 the enemy will move left. Add a child-node to `Slime` called "RayCast2D". 
+Now, if `direction` is 1 the enemy will move right, and if it is -1 the enemy will move left. Add a child-node to `Slime` called "RayCast2D". Rename this to "RayCastRight". Make a copy of this and name it "RayCastLeft". Pull the arrows so `RayCastRight` points to the right, and `RayCastLeft` points to the left. Now, attach these to the script.
+
+```gdscript
+extends Node2D
+
+const SPEED: int = 60
+
+var direction: int = 1
+
+@onready var ray_cast_right = $RayCastRight
+@onready var ray_cast_left = $RayCastLeft
+
+func process(delta):
+	position.x += direction * (SPEED * delta)
+```
+
+Now, we'll get into the logic where we'll have the slime change direction when one of the ray casts detects a wall.
+
+```gdscript
+extends Node2D
+
+const SPEED: int = 60
+
+var direction: int = 1
+
+@onready var ray_cast_right = $RayCastRight
+@onready var ray_cast_left = $RayCastLeft
+
+func process(delta):
+	if ray_cast_right.is_colliding():
+		direction = -1
+	if ray_cast_left.is_colliding():
+		direction = 1
+	position.x += direction * (SPEED * delta)
+```
+
+This is *much* more flexible than using an animation player like we did with the platform, because we can now put any slime between any two walls and it will work.
+
+It looks a little weird when it changes direction though without changing the sprite's direction. Lets fix that. Attach the `SlimeAnimation` node to the script and use its `flip_h` property to flip the sprite on its horizontal axis.
+
+```gdscript
+extends Node2D
+
+const SPEED: int = 60
+
+var direction: int = 1
+
+@onready var ray_cast_right = $RayCastRight
+@onready var ray_cast_left = $RayCastLeft
+@onready var slime_animation = $SlimeAnimation
+
+func process(delta):
+	if ray_cast_right.is_colliding():
+		direction = -1
+		slime_animation.flip_h = true
+	if ray_cast_left.is_colliding():
+		direction = 1
+		slime_animation.flip_h = false
+	position.x += direction * (SPEED * delta)
+```
+
+### Death Animation
+
+If you've tested the death mechanic, it may seem a little off. When the player touches the slime, the delay timer starts, then when it ends the game abruptly restarts. We'll make this a little more smooth by slowing the game down, and having the player ignore all collisions.
+
+Go to the script for the `Killzone` scene and add the following.
+
+```gdscript
+extends Area2d
+
+@onready var timer = $Timer
+	
+func _on_body_entered(body):
+	print("You died!")
+	Engine.time_scale = 0.5
+	body.get_node("PlayerHitbox").queue_free()
+	timer.start()
+	
+func _on_timer_timeout():
+	Engine.time_scale = 1.0
+	get_tree.reload_current_scene()
+```
+
+`Engine.time_scale` modifies how fast our game plays, so setting it to `0.5` will make the game run half as fast as it typically does. `body.get_node()` uses the `body` parameter that is passed into the `_on_body_entered(body)` function. This parameter holds the body that collides with the `Killzone`'s hitbox. Because of the collision mask we configured earlier, the only body that can do this is the player. We put `"PlayerHitbox"` inside the parenthesis to pass the hitbox for the player into `get_node()` which will search for a node of that name. Finally, we call `queue()` on that node, to remove the player's hitbox node from the scene tree. By deleting the player's hitbox, it will fall through the floor. Test this now.
+
+## Polishing the Player
+

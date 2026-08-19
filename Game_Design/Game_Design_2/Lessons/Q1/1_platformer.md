@@ -401,3 +401,8 @@ func _on_timer_timeout():
 
 ## Polishing the Player
 
+### Adding Custom Inputs
+
+Up to now, we've been using the default inputs to control the player. We should really know how to connect any inputs to our game. To do this we need to click on the "Project" drop-down at the top of the editor, then click on "Project Settings...". In that window click on the "Input Map" tab. Inside of the text input box labeled "Add New Action" type "jump" and click the "Add" button. You should now see the word "jump" in the table below under the "Action" column. Let's now add "move_right" and "move_left" the same way. Let's add some associated inputs to these actions. On the very end of each action is a plus sign "+". Click on this for `jump` and a *Listener* window will open, which will listen for your input. You can make jump whatever you'd like, but common jump inputs on the computer are `Space Bar`, `↑`, or `W`. If you'd like to include all of these, do them one at a time, clicking the "+" button for each one individually. Go ahead and add inputs for `move_right` and `move_left` as well.
+
+Now we'll incorporate this into the code. Open the script for the `Player` scene. Inside of the `_physics_process(delta)` function change `"ui_accept"` to `"jump"`, `"ui_left"` to `"move_left"`, and `"ui_right"` to `"move_right"`. 

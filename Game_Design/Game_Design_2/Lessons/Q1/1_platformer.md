@@ -86,13 +86,13 @@ The `TileMapLayer` node allows us to create grid-based maps using a tile-map fro
 
 Right-click on the `MainGame` node, select "Add Child Node" and select "TileMapLayer". Right-click on this new node and rename it to "Level". Similar to adding sprites to our player, go over to the inspector, find the "Tile Set" property, click on the drop-down arrow "∨", and select "New TileSet". Then, click on the word "TileSet",  and the section at the bottom of the editor should update. There should be a little error message that says that the TileMap does not have a TileSet source. Switch from TileMap, to "TileSet" at the very bottom of the editor. There will be a section that is labeled "Tiles". There is a plus sign "+" at the bottom that will bring up the file explorer. Navigate to `res://assets/sprites/world_tileset.png`. Godot should ask if you'd like it to automatically slice the sprite-sheet into tiles. You can click "Yes" for this, as this sprite-sheet is much more uniform than the knight is, and should get sliced cleanly. 
 
-There is one small issue to fix. The top of the palm tree got sliced into nine separate tiles, but we would never place some, but not all of them. Click the icon of the eraser in to toolbar at the top of this section and then click on each of the nine squares that make up the top of the palm tree. Those tiles should go dark. Now, turn off the eraser tool by clicking on it again. Finally, click on the top-left tile that made up the top of the palm tree and drag to the bottom-right. Now this will act as a single, large tile.
+There is one small issue to fix. The top of the palm tree got sliced into nine separate tiles, but we would never place some, but not all of them. Click the icon of the eraser in to toolbar at the top of this section and then click on each of the nine squares that make up the top of the palm tree. Those tiles should go dark. Now, turn off the eraser tool by clicking on it again. Finally, while holding `Shift`, click on the top-left tile that made up the top of the palm tree and drag to the bottom-right. Now this will act as a single, large tile.
 
 Let's test the game... and we fall through the map. This is because there is no collision on the tiles.
 
 ### Adding Collision to Specific Tiles
 
-In the inspector, find the drop-down labeled "∨Physics Layers" and click on it show the properties. Click on the button labeled "Add Element". Two sets of boxes should appear, one labeled "Collision Layer" and the other "Collision Mask". Both should have the number "1" turned on and the rest turned off. Now we can go back to the "TileSet" section of the editor, and switch to the "Paint" tab. Click on the "Select a property editor ∨" drop-down and click on "Physics". Click on every tile that looks like a terrain block and the two crate tiles. They should now have a light-blue filter over them. We also want collision on the bridge tiles, but notice how they do not take up the entire space of a tile. Use the editor on the left to get the correct shape for the bridge tiles.
+In the inspector, click on "TileSet" and find the drop-down labeled "∨Physics Layers" and click on it show the properties. Click on the button labeled "Add Element". Two sets of boxes should appear, one labeled "Collision Layer" and the other "Collision Mask". Both should have the number "1" turned on and the rest turned off. Now we can go back to the "TileSet" section of the editor, and switch to the "Paint" tab. Click on the "Select a property editor ∨" drop-down and click on "Physics". Click on every tile that looks like a terrain block and the two crate tiles. They should now have a light-blue filter over them. We also want collision on the bridge tiles, but notice how they do not take up the entire space of a tile. Use the editor on the left to get the correct shape for the bridge tiles.
 
 Let's test the game again. You should now be able to walk around your map! Be sure to test your custom collision shape for the bridge tiles. The player should not get hung-up on any of the bridge tiles; you should be able to walk smoothly across them.
 
@@ -127,6 +127,8 @@ Test this again and the knight should now go in front of the platform.
 ### Moving Platforms
 
 Drag another `Platform` scene into the level, right-click on it, and add a child node called "AnimationPlayer" and rename it to "PlatformMover".
+
+At the bottom of Godot, find the tab labled "Animation" and select it. Click "New animation" and name it "animation1".
 
 Click back on the `Platform2` node and look to the inspector. Find "∨Transform", inside, you'll see "Position". To the right of the number box you'll see a symbol of a key; click on it. Click the "Create" button on the pop-up window.
 

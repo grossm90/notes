@@ -250,7 +250,7 @@ func _on_body_entered(body):
 	timer.start()
 	
 func _on_timer_timeout():
-	get_tree.reload_current_scene()
+	get_tree().reload_current_scene()
 ```
 
 Test the game and jump off the map.
@@ -396,7 +396,7 @@ func _on_body_entered(body):
 	
 func _on_timer_timeout():
 	Engine.time_scale = 1.0
-	get_tree.reload_current_scene()
+	get_tree().reload_current_scene()
 ```
 
 `Engine.time_scale` modifies how fast our game plays, so setting it to `0.5` will make the game run half as fast as it typically does. `body.get_node()` uses the `body` parameter that is passed into the `_on_body_entered(body)` function. This parameter holds the body that collides with the `Killzone`'s hitbox. Because of the collision mask we configured earlier, the only body that can do this is the player. We put `"PlayerHitbox"` inside the parenthesis to pass the hitbox for the player into `get_node()` which will search for a node of that name. Finally, we call `queue()` on that node, to remove the player's hitbox node from the scene tree. By deleting the player's hitbox, it will fall through the floor. Test this now.

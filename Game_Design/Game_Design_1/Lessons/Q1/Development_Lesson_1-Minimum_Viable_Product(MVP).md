@@ -119,11 +119,11 @@ Now when we run the code, we see the score go up as we press the Z key.
 
 We now have something interactive (and maybe even entertaining to some people), but we don't have a game yet as we can't win or lose. Let's add a timer so the player can try to beat their high score.
 
-We'll start by adding a `timer` variable that will represent the time the player has to click the button. Remember that PICO-8 runs at 30 **frames per second(fps)**, so have to multiply the amount of seconds we want the timer to start at by 30. We'll give the player ten seconds to click the button as fast as they can by writing `timer = 10 * 30`.
+We'll start by adding a `timer` variable that will represent the time the player has to click the button. We'll give the player ten seconds to click the button as fast as they can by writing `timer = 10`.
 
 ```lua
 function _init()
-  timer = 10 * 30
+  timer = 10
   score = 0
 end
 function _update()
@@ -139,18 +139,18 @@ end
 
 #### Make the Timer Count Down
 
-In the `_update()` function we will make the timer count down by one each frame by simply writing `timer = timer - 1`, which makes sense when we remember that `score = score + 1` made our score go up by one.
+Recall that PICO-8 runs at 30 frames per second. This means that the timer must count down by one 30th each frame.  In the `_update()` function we will make the timer count down by writing `timer = timer - 1/30`.
 
 ```lua
 function _init()
-  timer = 10 * 30
+  timer = 10
   score = 0
 end
 function _update()
   if btnp(4) then
     score = score + 1
   end
-  timer = timer - 1;
+  timer = timer - 1/30
 end
 function _draw()
   cls()
@@ -168,14 +168,14 @@ Under `cls()` we will add `print(timer)` to show the current value of the `timer
 
 ```lua
 function _init()
-  timer = 10 * 30
+  timer = 10
   score = 0
 end
 function _update()
   if btnp(4) then
     score = score + 1
   end
-  timer = timer - 1;
+  timer = timer - 1/30
 end
 function _draw()
   cls()
@@ -187,7 +187,7 @@ end
 If we run this, we'll see the timer count down, but there are a few issues.
 
 -   It's a little confusing having two numbers on the screen with nothing to label them
--   The timer is formatted in frames which is a big number that counts down very fast
+-   The timer shows a long series of decimals because we are using division to count it down
 
 #### Show the Timer (v2) with Labels
 
@@ -197,14 +197,14 @@ To do string concatenation in the `print()` function we must use double periods 
 
 ```lua
 function _init()
-  timer = 10 * 30
+  timer = 10
   score = 0
 end
 function _update()
   if btnp(4) then
     score = score + 1
   end
-  timer = timer - 1;
+  timer = timer - 1/30
 end
 function _draw()
   cls()
@@ -213,50 +213,27 @@ function _draw()
 end
 ```
 
-Much better! Now let's format the timer to be in seconds, not frames.
+Much better! Now let's get rid of those decimals.
 
-#### Show the Timer (v3) in Seconds
+#### Show the Timer (v3); no Decimals
 
-Because the timer counts down inside `_update()`, it counts down thirty times every second. To convert this to seconds, we multiplied ten (seconds) by thirty (fps) so the timer _actually_ takes ten seconds to count down. The problem now is, most players don't understand what a frame is, and even if they do, our brains calculate time better in seconds than in frames.
-
-Okay, we multiplied the amount of seconds we wanted our timer to last by thirty to convert it to frames, so to convert it back to seconds we just have to do the opposite of multiplication, which is division. In the `print()` function for the timer we will update it to `print("time left: " .. timer/30)`. Note that in the code below I moved `timer/30` to the line below. The code works just fine when we break it up this way and it makes it easier to read in PICO-8, because the screen is so small.
+Because we used division, our timer often includes a decimal which flashes very fast and is quite ugly. We only want the whole number. Thankfully this is easy to fix by rounding up with the `ceil()` function (short for "ceiling"). Now the `print()` function for the timer will look like this `print("time left: " .. ceil(timer))`.
 
 ```lua
 function _init()
-  timer = 10 * 30
+  timer = 10
   score = 0
 end
 function _update()
   if btnp(4) then
     score = score + 1
   end
-  timer = timer - 1;
+  timer = timer - 1/30
 end
 function _draw()
   cls()
   print("time left: " ..
-    timer/30)
-  print("score: " .. score)
-end
-```
-
-After running this, you may notice another problem. Because we used division, our timer often includes a decimal which flashes very fast and is quite ugly. We only want the whole number. Thankfully this is easy to fix by rounding up with the `ceil()` function (short for "ceiling"). Now the `print()` function for the timer will look like this `print("time left: " .. ceil(timer/30))`.
-
-```lua
-function _init()
-  timer = 10 * 30
-  score = 0
-end
-function _update()
-  if btnp(4) then
-    score = score + 1
-  end
-  timer = timer - 1;
-end
-function _draw()
-  cls()
-  print("time left: " ..
-    ceil(timer/30))
+    ceil(timer))
   print("score: " .. score)
 end
 ```
@@ -271,7 +248,7 @@ We'll add an `if` statement under `_update()` and above the one that checks when
 
 ```lua
 function _init()
-  timer = 10 * 30
+  timer = 10
   score = 0
 end
 function _update()
@@ -279,13 +256,13 @@ function _update()
     if btnp(4) then
       score = score + 1
 	end
-	timer = timer - 1;
+	timer = timer - 1/30
   end
 end
 function _draw()
   cls()
   print("time left: " ..
-    ceil(timer/30))
+    ceil(timer))
   print("score: " .. score)
 end
 ```
@@ -300,7 +277,7 @@ First, let's create a variable for the high score. Note that for this lesson we 
 
 ```lua
 function _init()
-  timer = 10 * 30
+  timer = 10
   score = 0
   high_score = 0
 end
@@ -309,13 +286,13 @@ function _update()
     if btnp(4) then
       score = score + 1
     end
-  timer = timer - 1;
+  timer = timer - 1/30
   end
 end
 function _draw()
   cls()
   print("time left: " ..
-    ceil(timer/30))
+    ceil(timer))
   print("score: " .. score)
 end
 ```
@@ -328,7 +305,7 @@ If the timer is greater than zero, we are in "the actual game", but if not, we a
 
 ```lua
 function _init()
-  timer = 10 * 30
+  timer = 10
   score = 0
   high_score = 0
 end
@@ -337,7 +314,7 @@ function _update()
     if btnp(4) then
       score = score + 1
     end
-    timer = timer - 1;
+    timer = timer - 1/30
   else
     if score > high_score then
       high_score = score;
@@ -347,7 +324,7 @@ end
 function _draw()
   cls()
   print("time left: " ..
-    ceil(timer/30))
+    ceil(timer))
   print("score: " .. score)
 end
 ```
@@ -358,7 +335,7 @@ In `_draw()` we'll add another `if` statement to check if the timer is less than
 
 ```lua
 function _init()
-  timer = 10 * 30
+  timer = 10
   score = 0
   high_score = 0
 end
@@ -367,7 +344,7 @@ function _update()
     if btnp(4) then
       score = score + 1
     end
-    timer = timer - 1;
+    timer = timer - 1/30
     else
       if score > high_score then
         high_score = score;
@@ -377,7 +354,7 @@ end
 function _draw()
   cls()
   print("time left: " ..
-    ceil(timer/30))
+    ceil(timer))
   print("score: " .. score)
   if timer <= 0 then
     print("high score: " .. high_score)
@@ -392,7 +369,7 @@ We'll add `if btnp(5) then` and write `timer = 10 * 30` inside to reset the `tim
 
 ```lua
 function _init()
-  timer = 10 * 30
+  timer = 10
   score = 0
   high_score = 0
 end
@@ -401,7 +378,7 @@ function _update()
     if btnp(4) then
       score = score + 1
     end
-    timer = timer - 1;
+    timer = timer - 1/30
   else
     if score > high_score then
       high_score = score;
@@ -415,7 +392,7 @@ end
 function _draw()
   cls()
   print("time left: " ..
-    ceil(timer/30))
+    ceil(timer))
   print("score: " .. score)
   if timer <= 0 then
     print("high score: " .. high_score)

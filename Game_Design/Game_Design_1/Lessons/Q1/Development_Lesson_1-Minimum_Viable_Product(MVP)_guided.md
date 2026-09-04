@@ -1,11 +1,11 @@
 
-`_init()` runs then a game is first BLANK, and then never again.
+`_init()` runs when a game is first BLANK, and then never again.
 
 `_update()` runs BLANK times a second, and is meant for game *logic*.
 
 `_draw()` also runs BLANK times a second and is meant for game *visuals*.
 
-A BLANK is a container that stores data.
+A BLANK is a container/box that stores data.
 
 If we want to run code when something specific is true, but not when it is false we need a BLANK BLANK statement
 

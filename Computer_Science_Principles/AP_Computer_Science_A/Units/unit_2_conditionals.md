@@ -286,7 +286,7 @@ if (name1.equals(name2))
 else...
 ```
 
-> [!DANGER]
+> [!WARNING]
 > 
 > **NEVER** use `==` to compare two string values! Always use `.equals()` or `.compareTo()`
 
@@ -451,7 +451,7 @@ else
 }
 ```
 
-## The null value
+## The `null` value
 
 It's possible for a variable to have a `null` value, which simply means that the value hasn't been set. `null` is different from 0, and different from "", and different from being undefined. You can check to see if a value has been set for any variable by comparing the variable using `== null`:
 
@@ -464,7 +464,7 @@ if (middleName != null)
 
 DeMorgan's Law is not a problem, but rather a strategy that you can use to help solve the problem of complex Boolean expressions.
 
-DeMorgan's Law is concerned with simplifying Boolean expressions that include both the _not_ operator (`!`) and a _Boolean operators_. These can be confusing if they're awkwardly phrased, but you can use DeMorgan's Law to convert them to a different, more manageable, form.
+DeMorgan's Law is concerned with simplifying Boolean expressions that include both the _not_ operator (`!`) and a _Boolean operator_. These can be confusing if they're awkwardly phrased, but you can use DeMorgan's Law to convert them to a different, more manageable, form.
 
 Boolean expressions that include a _not_ operator ( `!` ) and boolean operators _and_ ( `&&` in Java ) or _or_ ( `||` in Java) can be simplified by using these conversions:
 
